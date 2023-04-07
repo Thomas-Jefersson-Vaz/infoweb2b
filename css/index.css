@@ -1,0 +1,15 @@
+a{
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: crimson;
+}
+
+a:hover{
+  color: crimson;
+  text-decoration: underline;
+  text-decoration-color: black;
+  animation-duration: 30ms;
+}
+p{
+  width: 50%;
+}

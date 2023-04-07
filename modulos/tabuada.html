@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Se eu não ganhar nota completa vou ficar triste-->
+
+    <!--Meta-->
+    <meta charset="UTF-8">
+    <!--css-->
+    <link rel="stylesheet" href="../css/tabuada.css">
+    <title>Calculadora de tabuada</title>
+  </head>
+  <body>
+
+    <div id="title">
+      <h1>calculadora de tabuada</h1>
+      <a href="../index.html">Voltar</a>
+    </div>
+
+    <div id="inputs">
+      <label for="b1" id="l1"> coloque um número e aparecerá  sua respectiva tabuada do 1 ao 10
+      <input type="number" id="b1" placeholder="Ex: 74">
+      </label>
+      <input type="submit"onclick="calc()" value="calcular" id="b2">
+    </div>
+    
+    <p>Resultado:</p>
+    
+    <div id="caixa">	  
+    </div>
+
+
+
+    <script>
+      document.addEventListener("keyup", function(event) {
+    		event.preventDefault();
+    		if (event.keyCode === 13) {
+     		  calc();
+					console.log("enter")
+    			}
+				});
+
+
+      function calc(){
+        document.getElementById("caixa").innerHTML = ""
+        var numero = document.getElementById("b1").value
+        if (numero == 0){
+          mostra('Erro, coloque algum número diferente de 0')
+        }
+        else{
+          var i = 0
+        for(let i=0; i<=10; i++){
+          var c = parseInt((i*numero))
+          mostra(`<br> ${i} × ${numero} = ${c}`);
+        }
+        }
+        
+      }
+      function mostra(txt){
+	      var Exibir = document.getElementById("caixa").innerHTML += txt;
+	    }
+    </script>
+  </body>
+</html>
