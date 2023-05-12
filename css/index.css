@@ -1,12 +1,15 @@
 html, body{
   height: 100%;
+  margin: 0px;
 }
 
 /* Header start */
 header{
+  width: 100%;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  background-color: aliceblue;
 }
 header>ul, header>div{
   display: flex;
@@ -28,12 +31,18 @@ header>ul{
 }
 /* Header end */
 /* body start */
-#Sections{
+
+#Calculadoras{
+  display: flex;
+  flex-flow: row;
+}
+.Sections{
   display: flex;
   flex-flow: column;
   align-items: center;
+  margin-left: 1%;
   height: 25%;
-  width: 12%;
+  width: 15%;
   border: 3px solid black ;
 }
 #inputs>input{
@@ -41,6 +50,13 @@ header>ul{
 }
 #inputs{
   display: contents;
+}
+.Sections>label{
+  width: 85%;
+}
+#Calculadora_idade>label{
+  display: contents;
+  margin-left: auto;
 }
 /* body end */
 /* footer start */

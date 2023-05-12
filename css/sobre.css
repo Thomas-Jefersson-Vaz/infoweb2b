@@ -1,0 +1,32 @@
+html, body{
+    height: 100%;
+    margin: 0px;
+  }
+  
+  /* Header start */
+  header{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    background-color: aliceblue;
+  }
+  header>ul, header>div{
+    display: flex;
+    flex-flow: row;
+    list-style: none;
+    
+  }
+  header>ul>li{
+    margin-left: 10%;
+  }
+  header>ul>li>a, header>ul>li>a:visited{
+    text-decoration: none;
+    color: black;
+   
+  }
+  header>ul{
+    margin-right: 10%;
+    font-size: larger;
+  }
+  /* Header end */

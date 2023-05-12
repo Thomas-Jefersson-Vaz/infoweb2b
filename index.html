@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
   <!--Se eu não ganhar nota completa vou ficar triste-->
   <!--Meta-->
@@ -13,8 +14,9 @@
 
   <link rel="icon" href="./img/icons8-calculator-color-120.png" type="image/png">
   <title>Minhas calculadoras</title>
-  
+
 </head>
+
 <body>
   <header>
     <div>
@@ -23,13 +25,13 @@
     </div>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="">Sobre</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
       <li><a href="">Contatos</a></li>
     </ul>
   </header>
 
-
-  <section id="Calculadora_simples">
+  <div id="Calculadoras">
+    <section class="Sections" id="Calculadora_simples">
 
       <h2>Calculadora Simples</h2>
       <div id="inputs">
@@ -46,95 +48,173 @@
 
       <div class="resposta">
         <button onclick="Calc_simples() ">Calcular</button>
-        <button onclick="limpar()">Limpar Tudo</button>
+        <button onclick="limpar_simples()">Limpar Tudo</button>
+      </div>
+
+      <p>Resultado:</p>
+      <p id="caixa_simples"></p>
+    </section>
+
+    <section class="Sections" id="Calculadora_tabuada">
+      <h2>Calculadora Tabuada</h2>
+      <label for="Calculadora_tabuada_input">coloque um número e aparecerá sua respectiva tabuada do 1 ao 10 </label>
+      <input type="number" id="Calculadora_tabuada_input" placeholder="Ex: 74">
+      <div class="resposta">
+        <button onclick="Calc_tabuada()">Calcular</button>
+        <button onclick="limpar_tabuada()">Limpar Tudo</button>
       </div>
       <p>Resultado:</p>
-      <div id="caixa">
-  	  </div>
+      <p id="caixa_tabuada"></p>
 
-      
-  </section>
+    </section>
 
-  <section class="Sections" id="Calculadora_tabuada">
-    <h2>Calculadora Tabuada</h2>
-    <label for="Calculadora_tabuada_input">coloque um número e aparecerá  sua respectiva tabuada do 1 ao 10
-    <input type="number" id="Calculadora_tabuada_input" placeholder="Ex: 74">
-    </label>
-    <button onclick="" >  </button>
-  </section>
+    <section class="Sections" id="Calculadora_idade">
+      <h2>Calculadora de Idade</h2>
+      <input type="number" name="Ano_de_nascimento" id="input_idade" placeholder="Ano de nascimento">
+      <label for="">Já fez aniversário este ano?</label>
+      <div>
+        <label for="input_radio_1">Sim<input type="radio" name="cb" id="idade_input_radio_1"></label>
+        <label for="input_radio_2">Não<input type="radio" name="cb" id="idade_input_radio_2"></label>
+      </div>
+
+
+      <div class="resposta">
+        <button onclick="Calc_idade()">Calcular</button>
+        <button onclick="limpar_idade()">Limpar Tudo</button>
+      </div>
+
+      <p>Resultado:</p>
+      <p id="caixa_idade"></p>
+    </section>
+  </div>
 
   <script>
 
 
-    function radio_detector(){
-    if($('#input_radio_1').is(":checked")){
-      var b = "+";
-      console.log(b);
-      return (b);
+    function radio_detector() {
+      if ($('#input_radio_1').is(":checked")) {
+        let b = "+";
+        console.log(b);
+        return (b);
+      }
+      if ($('#input_radio_2').is(":checked")) {
+        let b = "-";
+        console.log(b);
+        return (b);
+      }
+      if ($('#input_radio_3').is(":checked")) {
+        let b = "*";
+        console.log(b);
+        return (b);
+      }
+      if ($('#input_radio_4').is(":checked")) {
+        let b = "/";
+        console.log(b);
+        return (b);
+      }
     }
-    if($('#input_radio_2').is(":checked")){
-      var b = "-";
-      console.log(b);
-      return (b);
+
+
+    function Calc_simples() {
+      let pn = document.getElementById("input_number_1").value;
+      let sn = document.getElementById("input_number_2").value;
+      let s = radio_detector();
+      let pni = parseInt(pn);
+      let sni = parseInt(sn);
+      switch (s) {
+        case "+":
+          mostra_simples(`${pni} + ${sni} = ${pni + sni}`);
+          break;
+        case "-":
+          mostra_simples(`${pni} - ${sni} = ${pni - sni}`);
+          break;
+        case "*":
+          mostra_simples(`${pni} × ${sni} = ${pni * sni}`);
+          break;
+        case "/":
+          mostra_simples(`${pni} ÷ ${sni} = ${pni / sni}`);
+          break;
+        default:
+          mostra_simples("Por favor coloque um sinal válido")
+      }
     }
-    if($('#input_radio_3').is(":checked")){
-      var b = "*";
-      console.log(b);
-      return (b);
+    function Calc_tabuada() {
+      let num = document.getElementById("Calculadora_tabuada_input").value;
+      let caixa = document.getElementById("caixa_tabuada").innerHTML = ""
+
+      for (let i = 0; i <= 10; i++) {
+        let c = parseInt((i * num))
+        mostra_tabuada(`<br> ${i} × ${num} = ${c}`);
+      }
     }
-    if($('#input_radio_4').is(":checked")){
-      var b = "/";
-      console.log(b); 
-      return (b);
+    function radio_detector_idade() {
+      if ($('#idade_input_radio_1').is(":checked")) {
+        let b = "Sim";
+        return (b);
+      }
+      if ($('#idade_input_radio_2').is(":checked")) {
+        let b = "Não";
+        return (b);
+      }
     }
-  }
-
-
-  function Calc_simples(){
-    let pn = document.getElementById("input_number_1").value;
-    let sn = document.getElementById("input_number_2").value;
-    let s = radio_detector();
-    let pni = parseInt(pn);
-    let sni = parseInt(sn);
-    switch(s){
-      case "+":
-        mostra(`${pni} + ${sni} = ${pni+sni}`);
-        break;
-      case "-":
-        mostra(`${pni} - ${sni} = ${pni-sni}`);
-        break;
-      case "*":
-        mostra(`${pni} × ${sni} = ${pni*sni}`);
-        break;
-      case "/":
-        mostra(`${pni} ÷ ${sni} = ${pni/sni}`);
-        break;
-      default:
-        mostra("Por favor coloque um sinal válido")
+    function Calc_idade() {
+      let input_idade = document.getElementById("input_idade").value;
+      let Data_atual = new Date();
+      let ano = Data_atual.getFullYear();
+      let idade = (ano - input_idade);
+      let texto = radio_detector_idade();
+      let idade2 = (idade - 1);
+      switch (texto) {
+        case "Sim":
+          mostra_idade("Você tem " + idade + " anos de idade" + "<br> Parabéns atrasado");
+          break;
+        case "Não":
+          mostra_idade("Você tem " + idade2 + " anos de idade" + "<br> Parabéns adiantado");
+          break;
+        default:
+          mostra_idade("responda a pergunta");
+          break;
+      }
     }
-  }
 
+    function mostra_simples(txt) {
+      let a = document.getElementById("caixa_simples").innerHTML = txt;
 
+    }
+    function mostra_tabuada(txt) {
+      let a = document.getElementById("caixa_tabuada").innerHTML += txt;
 
-  function mostra(txt){
-    var a = document.getElementById("caixa").innerHTML = txt;
-    
-  }
+    }
+    function mostra_idade(txt) {
+      let a = document.getElementById("caixa_idade").innerHTML = txt;
 
-  function limpar(){
-    var l1 = document.getElementById("input_number_1");
-    var l2 = document.getElementById("input_number_2");
-    var l3 = document.getElementById("input_radio_1");
-    var l4 = document.getElementById("input_radio_2");
-    var l5 = document.getElementById("input_radio_3");
-    var l6 = document.getElementById("input_radio_4");
-    $( input_radio_1 ).prop({checked: false});
-    $( input_radio_2 ).prop({checked: false});
-    $( input_radio_3 ).prop({checked: false});
-    $( input_radio_4 ).prop({checked: false});
-    l1.value = "";
-    l2.value = "";
-  }
+    }
+
+    function limpar_simples() {
+      let l1 = document.getElementById("input_number_1");
+      let l2 = document.getElementById("input_number_2");
+      let l3 = document.getElementById("input_radio_1");
+      let l4 = document.getElementById("input_radio_2");
+      let l5 = document.getElementById("input_radio_3");
+      let l6 = document.getElementById("input_radio_4");
+      $(input_radio_1).prop({ checked: false });
+      $(input_radio_2).prop({ checked: false });
+      $(input_radio_3).prop({ checked: false });
+      $(input_radio_4).prop({ checked: false });
+      l1.value = "";
+      l2.value = "";
+    }
+    function limpar_tabuada() {
+      let input = document.getElementById("Calculadora_tabuada_input");
+      let caixa = document.getElementById("caixa_tabuada").innerHTML = " ";
+      input.value = " ";
+    }
+    function limpar_idade() {
+      let input = document.getElementById("input_idade");
+      $(idade_input_radio_1).prop({ checked: false });
+      $(idade_input_radio_2).prop({ checked: false });
+      input.value = "";
+    }
 
 
   </script>
@@ -144,4 +224,5 @@
   </footer>
 
 </body>
+
 </html>
