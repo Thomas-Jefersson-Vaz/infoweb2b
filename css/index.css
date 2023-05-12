@@ -1,0 +1,49 @@
+html, body{
+  height: 100%;
+}
+
+/* Header start */
+header{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+header>ul, header>div{
+  display: flex;
+  flex-flow: row;
+  list-style: none;
+  
+}
+header>ul>li{
+  margin-left: 10%;
+}
+header>ul>li>a, header>ul>li>a:visited{
+  text-decoration: none;
+  color: black;
+ 
+}
+header>ul{
+  margin-right: 10%;
+  font-size: larger;
+}
+/* Header end */
+/* body start */
+#Sections{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 25%;
+  width: 12%;
+  border: 3px solid black ;
+}
+#inputs>input{
+  margin: none;
+}
+#inputs{
+  display: contents;
+}
+/* body end */
+/* footer start */
+
+
+/* footer end */
